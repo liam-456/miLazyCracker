@@ -27,13 +27,13 @@ if [ -f "/etc/debian_version" ]; then
 fi
 
 # install MFOC
-[ -d mfoc ] || git clone https://github.com/nfc-tools/mfoc.git
+[ -d mfoc ] || git clone https://github.com/liam-456/mfoc-hardnested.git
 (
-    cd mfoc || exit 1
+    cd mfoc-hardnested || exit 1
     git reset --hard
     git clean -dfx
     # tested against commit 9d9f01fb
-    autoreconf -vfi
+    autoreconf -vis
     ./configure
     make
     sudo make install
