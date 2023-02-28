@@ -47,15 +47,15 @@ TMPFILE_FND="mfc_${myUID}_foundKeys.txt"
 
 if [ -f "$TMPFILE_FND" ]; then
     if [ -f "extended-std.keys" ]; then
-        mfoc -f "$TMPFILE_FND" -f "extended-std.keys" -O "$TMPFILE_MFD"  -D "$TMPFILE_UNK"
+        mfoc-hardnested -f "$TMPFILE_FND" -f "extended-std.keys" -O "$TMPFILE_MFD"
     else
-        mfoc -f "$TMPFILE_FND" -O "$TMPFILE_MFD"  -D "$TMPFILE_UNK"
+        mfoc-hardnested -f "$TMPFILE_FND" -O "$TMPFILE_MFD"
     fi
 else
     if [ -f "extended-std.keys" ]; then
-        mfoc -f "extended-std.keys" -O "$TMPFILE_MFD" -D "$TMPFILE_UNK"
+        mfoc-hardnested -f "extended-std.keys" -O "$TMPFILE_MFD"
     else
-        mfoc -O "$TMPFILE_MFD" -D "$TMPFILE_UNK"
+        mfoc-hardnested -O "$TMPFILE_MFD"
     fi
 fi
 mfocResult=$?
@@ -116,7 +116,7 @@ while [ $keepTrying -eq 1 ]; do
             #echo ${arr[1]}
             #echo ${arr[2]}
             #foundKeysForMFOC="$foundKeysForMFOC-k ${arr[0]} "
-            mycmd=(mfoc -f "$TMPFILE_FND" -O "$TMPFILE_MFD"  -D "$TMPFILE_UNK")
+            mycmd=(mfoc-hardnested -f "$TMPFILE_FND" -O "$TMPFILE_MFD"  -D "$TMPFILE_UNK")
             echo "${mycmd[@]}"
             "${mycmd[@]}"
             mfocResult=$?
