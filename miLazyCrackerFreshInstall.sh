@@ -4,7 +4,7 @@
 # 2550aa92fcb504b62dbc4a978c51d283f34ed2d393ea0c55444dc4bf5cd3c4e4  craptev1-v1.1.tar.xz
 # c116df63d88bea2966b98cf77170a7382585789b9e47088766e167a666230a20  crapto1-v3.3.tar.xz
 [ -f craptev1-v1.1.tar.xz ] || wget https://github.com/droidnewbie2/acr122uNFC/raw/master/craptev1-v1.1.tar.xz
-[ -f crapto1-v3.3.tar.xz ] || wget https://github.com/droidnewbie2/acr122uNFC/raw/master/craptev1-v3.3.tar.xz
+[ -f crapto1-v3.3.tar.xz ] || wget https://github.com/droidnewbie2/acr122uNFC/raw/master/crapto1-v3.3.tar.xz
 
 if [ ! -f craptev1-v1.1.tar.xz ] || [ ! -f crapto1-v3.3.tar.xz ]; then
     echo "I need craptev1-v1.1.tar.xz and crapto1-v3.3.tar.xz. Aborting."
@@ -15,15 +15,7 @@ set -x
 
 # run this from inside miLazyCracker git repo
 if [ -f "/etc/debian_version" ]; then
-    pkgs=""
-    for pkg in git libnfc-bin autoconf libnfc-dev; do
-        if ! dpkg -l $pkg >/dev/null 2>&1; then
-            pkgs="$pkgs $pkg"
-        fi
-    done
-    if [ "$pkgs" != "" ]; then
-        sudo apt-get install $pkgs
-    fi
+    sudo apt install git libnfc-bin autoconf libnfc-dev liblzma-dev
 fi
 
 # install MFOC
